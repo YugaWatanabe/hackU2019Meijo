@@ -68,6 +68,7 @@ if (!empty($_POST)) {
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <a class="nav-item nav-link" href="../index.php">ホーム</a>
+        <a class="nav-item nav-link" href="../project/joinproject.php">プロジェクトを探す</a>
         <a class="nav-item nav-link active" href="#">ログイン<span class="sr-only">(current)</span></a>
       </div>
     </div>
@@ -75,6 +76,12 @@ if (!empty($_POST)) {
 
   <br>
   <div class="container">
+    <?php if ($error) : ?>
+      <div style="color: #ff0000; background-color: transparent">
+        <h6 style="color=red;">正しい入力ができてないです<br>やりなおしてください</h6>
+      </div>
+      <br>
+    <?php endif; ?>
     <form action="" method="post" onSubmit="return resister()" enctype="multipart/form-data">
       <h1>ログイン</h1>
       <br>
