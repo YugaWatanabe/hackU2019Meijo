@@ -76,7 +76,6 @@ if($_REQUEST['action'] == 'rewrite' && isset($_SESSION['join'])){
     <div class="navbar-nav">
       <a class="nav-item nav-link" href="../index.php">ホーム</a>
       <a class="nav-item nav-link active" href="#">ログイン<span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="../project/createpro.php">プロジェクト参加</a>
     </div>
   </div>
 </nav>

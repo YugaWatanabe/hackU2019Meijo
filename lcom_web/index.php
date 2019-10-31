@@ -1,3 +1,18 @@
+<?php
+session_start();
+require('dbconnect.php');
+
+if(isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
+  $_SESSION['time'] = time();
+
+  $loginflag = true;
+} else {
+  $loginflag = false;
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -22,9 +37,17 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="login/login.php">ログイン</a>
-      <a class="nav-item nav-link" href="project/createpro.php">プロジェクト参加</a>
+      <a class="nav-item nav-link active" href="#">ホーム<span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="project/joinproject.php">プロジェクトを探す</a>
+      <?php if(!$loginflag): ?>  
+        <a class="nav-item nav-link" href="login/login.php">ログイン</a>
+      <?php endif; ?>
+
+      <?php if($loginflag): ?>      
+        <a class="nav-item nav-link" href="project/createpro.php">プロジェクト作成</a>
+        <a class="nav-item nav-link" href="login/logout.php">ログアウト</a> 
+      <?php endif; ?>
+
     </div>
   </div>
 </nav>
@@ -34,6 +57,8 @@
     <div class="container">
         <img src="image/top/lcomtop1.png" alt="lcomtyan" class="img-thumbnail">
     </div>
+
+    
 
 </body>
 </html>
