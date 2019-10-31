@@ -75,6 +75,7 @@ if($_REQUEST['action'] == 'rewrite' && isset($_SESSION['join'])){
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
       <a class="nav-item nav-link" href="../index.php">ホーム</a>
+      <a class="nav-item nav-link" href="../project/joinproject.php">プロジェクトを探す</a>
       <a class="nav-item nav-link active" href="#">ログイン<span class="sr-only">(current)</span></a>
     </div>
   </div>
