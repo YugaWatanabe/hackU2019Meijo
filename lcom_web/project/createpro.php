@@ -44,6 +44,10 @@ if (!empty($_POST)) {
     $error['open_time'] = 'blank';
   }
 
+  if ($_POST['place_id'] === '') {
+    $error['place_id'] = 'blank';
+  }
+
 
   $fileName = $_FILES['image']['project_name'];
   if (!empty($fileName)) {
@@ -105,12 +109,13 @@ if ($_REQUEST['action'] == 'rewrite' && isset($_SESSION['join'])) {
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <a class="nav-item nav-link" href="../index.php">ホーム</a>
+        <a class="nav-item nav-link" href="joinproject.php">プロジェクトを探す</a>
         <?php if (!$loginflag) : ?>
-          <a class="nav-item nav-link" href="login/login.php">ログイン</a>
+          <a class="nav-item nav-link" href="../login/login.php">ログイン</a>
         <?php endif; ?>
 
         <?php if ($loginflag) : ?>
-          <a class="nav-item nav-link active" href="#">プロジェクト作成<span class="sr-only">(current)</span></a>
+          <a class="nav-item nav-link active" href="">プロジェクト作成<span class="sr-only">(current)</span></a>
           <a class="nav-item nav-link" href="../login/logout.php">ログアウト</a>
         <?php endif; ?>
       </div>
@@ -150,12 +155,12 @@ if ($_REQUEST['action'] == 'rewrite' && isset($_SESSION['join'])) {
         <br>
 
         <label for="custom-select-1b">開催地域(仮):</label>
-        <select id="custom-select-1b" class="custom-select" name="place">
+        <select id="custom-select-1b" class="custom-select" name="place_id">
           <option value="">-</option>
-          <option value="名城大学">名城大学</option>
-          <option value="愛知県豊田市">豊田市</option>
-          <option value="愛知県名古屋市">名古屋市</option>
-          <option value="愛知県豊橋市">豊橋市</option>
+          <option value="1">東京都</option>
+          <option value="2">神奈川県</option>
+          <option value="3">大阪府</option>
+          <option value="4">愛知県</option>
         </select>
 
     

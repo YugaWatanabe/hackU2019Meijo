@@ -9,6 +9,18 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
     $loginflag = false;
 }
 
+$counts = $db->query('SELECT COUNT(*) AS cnt FROM projects');
+$cnt = $counts->fetch();
+
+$maxPage = ceil($cnt['cnt'] / 12);
+$page = min($page, $maxPage);
+
+$start = ($page - 1) * 12;
+
+$procards = $db->prepare('SELECT m.name, m.picture, p.* FROM members m, projects p WHERE m.id=p.member_id ORDER BY p.created DESC LIMIT 0, 6');
+$procards->bindParam(1, $start, PDO::PARAM_INT);
+$procards->execute();
+
 ?>
 
 
@@ -22,6 +34,8 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
     <title>LCOM プロジェクト</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="../style.css">
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -53,23 +67,25 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
         </div>
     </nav>
 
-    <h1>トップ画面</h1>
 
     <div class="container">
-        <div class="card" style="width: 18rem;">
-            <img src="../image/project/" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
+        <br>
+        <h1 style="text-align: center;">プロジェクト一覧</h1>
+        <br>
+        <div class="card-deck" style="text-align: center;">
+            <?php foreach ($procards as $procard) : ?>
+                <div class="card col-4 mb-3" style="padding: 15px; text-align: center;">
+                    <img src="../image/project/<?php print(htmlspecialchars($procard['project_picture'], ENT_QUOTES)); ?>" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title"><?php print(htmlspecialchars($procard['project_name'], ENT_QUOTES)); ?></h5>
+                        <p class="card-text"><?php print(mb_substr(htmlspecialchars($procard['message'], ENT_QUOTES), 0, 25)); ?></p>
+                        <a href="content.php?id=<?php print(htmlspecialchars($procard['id'], ENT_QUOTES)); ?>" class="btn btn-primary">詳細へGO</a>
+                    </div>
+                </div>
+            <?php endforeach; ?>
         </div>
 
 
-        <figure class="figure">
-            <img src="../image/top/lcomtop2.png" class="figure-img img-fluid rounded" alt="...">
-            <figcaption class="figure-caption">A caption for the above image.</figcaption>
-        </figure>
     </div>
 
 
