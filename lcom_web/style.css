@@ -58,6 +58,26 @@
     display: inline-block;
 }
 
+
+/*コメント欄*/
+
+.item-header {
+    padding: 10px;
+}
+
+.item-user-icon {
+    float: left;
+}
+
+.item-user-name,
+.item-date {
+    display: block;
+    margin-left: 60px;
+}
+
+
+/*ここまで*/
+
 @media screen and (min-width: 767px) {
     /*ウィンドウ幅が767px以上の場合に適用*/
     .card {

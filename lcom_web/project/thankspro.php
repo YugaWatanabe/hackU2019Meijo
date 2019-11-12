@@ -2,12 +2,15 @@
 session_start();
 require('../dbconnect.php');
 
-if(isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
-  $_SESSION['time'] = time();
+if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
+    $_SESSION['time'] = time();
 
-  $loginflag = true;
+    $message = $db->prepare('INSERT INTO posts SET member_id=?, message="初めての投稿！", reply_project_id=?, reply_message_id=0, created=NOW()');
+    $message->execute(array($_SESSION['id'], $_REQUEST['id']));
+
+    $loginflag = true;
 } else {
-  $loginflag = false;
+    $loginflag = false;
 }
 
 ?>
