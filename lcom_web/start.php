@@ -24,7 +24,7 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="style4.css">
+    <link rel="stylesheet" href="style6.css">
 
     <script src="//code.jquery.com/jquery-1.12.1.min.js"></script>
 
@@ -74,12 +74,13 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
             </form>
         </nav>
 
-
+        
 
 
         <div class="container">
-            <div class="row">
 
+            <br>
+            <div class="row">
                 <nobr><a href=""><img src="image/top/cloud_4.png" class="col-6 img-fluid animated pulse infinite" ; id="cloud_img" ; alt="cloud"></a><a href=""><img src="image/top/cloud_5.png" id="cloud_img" ; class="col-6 img-fluid animated pulse infinite" ; alt="cloud"></a></nobr>
                 <nobr><a href=""><img src="image/top/cloud_7.png" class="col-6 img-fluid animated pulse infinite" ; id="cloud_img" ; alt="cloud"></a><a href="keyword.php"><img src="image/top/cloud_8.png" id="cloud_img" ; class="col-6 img-fluid animated pulse infinite" ; alt="cloud"></a></nobr>
                 <br>

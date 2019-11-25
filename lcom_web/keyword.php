@@ -24,7 +24,7 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="style4.css">
+    <link rel="stylesheet" href="style6.css">
 
     <script src="//code.jquery.com/jquery-1.12.1.min.js"></script>
 
@@ -71,17 +71,34 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
         </nav>
 
 
+        <div class="container">
+            <nobr>
+                <div class="pin1 animated flipInX" name="search" value="1">
+                    <a href="project/searchproject.php?search=桃&page=1"><img src="image/top/pin/pin_1.png">
+                        <p>桃</p>
+                    </a>
+                </div>
 
-        <div class="pin1">
-            <img src="image/top/pin/pin_1.png" />
-            <p>SUNSET</p>
+                <div class="pin2 animated flipInX" name="search" value="1">
+                    <a href="project/searchproject.php?search=芝刈り&page=1"><img src="image/top/pin/pin_2.png" />
+                        <p>芝刈り</p>
+                    </a>
+                </div>
+
+                <div class="pin3 animated flipInX" name="search" value="1">
+                    <a href="project/searchproject.php?search=川&page=1"><img src="image/top/pin/pin_3.png" />
+                        <p>川</p>
+                    </a>
+                </div>
+
+                <div class="pin4 animated flipInX" name="search" value="1">
+                    <a href="project/searchproject.php?search=えるこむ&page=1"><img src="image/top/pin/pin_7.png" />
+                        <p>えるこむ</p>
+                    </a>
+                </div>
+            </nobr>
+
         </div>
-
-
-
-
-
-
 </body>
 
 </html>
