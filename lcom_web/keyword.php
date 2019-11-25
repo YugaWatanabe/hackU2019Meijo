@@ -39,10 +39,6 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
 
 <body>
 
-    <div class="anime">
-        <img src="image/video/lcom_23.gif" />
-    </div>
-
     <div class="mainSite">
         <nav class="navbar navbar-expand-lg navbar-dark">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,7 +46,7 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-item nav-link active" href="#">ホーム<span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link active" href="index.php">ホーム<span class="sr-only">(current)</span></a>
                     <a class="nav-item nav-link" href="project/joinproject.php">プロジェクトを探す</a>
                     <?php if (!$loginflag) : ?>
                         <a class="nav-item nav-link" href="login/login.php">ログイン</a>
@@ -76,50 +72,16 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
 
 
 
-
-        <div class="container">
-            <div class="row">
-
-                <nobr><a href=""><img src="image/top/cloud_4.png" class="col-6 img-fluid animated pulse infinite" ; id="cloud_img" ; alt="cloud"></a><a href=""><img src="image/top/cloud_5.png" id="cloud_img" ; class="col-6 img-fluid animated pulse infinite" ; alt="cloud"></a></nobr>
-                <nobr><a href=""><img src="image/top/cloud_7.png" class="col-6 img-fluid animated pulse infinite" ; id="cloud_img" ; alt="cloud"></a><a href="keyword.php"><img src="image/top/cloud_8.png" id="cloud_img" ; class="col-6 img-fluid animated pulse infinite" ; alt="cloud"></a></nobr>
-                <br>
-                <img src="image/top/lcom_4.png" class="col-12 img-fluid" ; id="lcom_img" ; alt="cloud">
-
-                <div class="kakomi_top">
-                    <h5>おすすめ : aaaa</h5>
-                    <h6>最大15文字程度？</h6>
-                </div>
-                <div class="kakomi_top">
-                    <h5>おすすめ : aaaa</h5>
-                    <h6>uuuuuuuuuuuuuuuuuuuuu</h6>
-                </div>
-            </div>
+        <div class="pin1">
+            <img src="image/top/pin/pin_1.png" />
+            <p>SUNSET</p>
         </div>
 
 
 
 
 
-        <script>
-            $(function() {
-                $(".mainSite").css({
-                    opacity: '0'
-                });
-                setTimeout(function() {
-                    $(".mainSite").css("display", "block");
-                    $(".mainSite").stop().animate({
-                        opacity: '1'
-                    }, 1000);
-                }, 700);
-            });
 
-            $(function() {
-                $(".mainSite").css("display", "none");
-                setTimeout(function() {
-                    $('.anime').fadeOut();
-                }, 2000);
-            });
-        </script>
 </body>
 
 </html>

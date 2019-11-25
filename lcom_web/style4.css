@@ -7,7 +7,7 @@ PC用*/
 }
 
 .bg {
-    background-color: #66B7EC;
+    background-color: #019FE6;
 }
 
 .card {
@@ -69,6 +69,28 @@ PC用*/
 }
 
 
+/*ピン*/
+
+.pin1 {
+    /*親div*/
+    position: relative;
+    /*相対配置*/
+}
+
+.pin1 p {
+    position: absolute;
+    /*絶対配置*/
+    color: white;
+    /*文字は白に*/
+    top: 0;
+    left: 0;
+}
+
+.pin1 img {
+    width: 100%;
+}
+
+
 /*ハンバーガーメニュー*/
 
 .navbar {
@@ -114,6 +136,7 @@ PC用*/
     padding-right: 3%;
     padding-left: 3%;
     height: auto;
+    filter: drop-shadow(2px 2px 2px rgba(160, 160, 160, 0.8));
 }
 
 #lcom_img {
@@ -146,7 +169,7 @@ PC用*/
 .anime {
     width: 100vw;
     height: 100vh;
-    background-color: #66B7EC;
+    background-color: #019FE6;
     position: relative;
 }
 
@@ -168,7 +191,7 @@ PC用*/
     height: 100vh;
     padding: 0;
     margin: 0;
-    background-color: #66B7EC;
+    background-color: #019FE6;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -212,6 +235,35 @@ PC用*/
     .btn {
         margin-top: 14px;
     }
+    #cloud_img {
+        padding-top: 5%;
+        padding-right: 3%;
+        padding-left: 3%;
+        width: auto;
+        max-width: 27vw;
+        height: auto;
+        max-height: 14vw;
+    }
+    #lcom_img {
+        width: auto;
+        max-width: 15vw;
+        height: auto;
+        max-height: 17vw;
+        margin: 0 33%;
+        text-align: center;
+    }
+    .kakomi_top {
+        margin: 1em auto;
+        padding: 0.3em 0.3em;
+        width: 40%;
+        /*幅の調節*/
+        background-color: #fff;
+        /* 背景色 */
+        border: 2px solid #000000;
+        /*線の太さ・色*/
+        border-radius: 7px;
+        box-shadow: 0.2px 0.4px 0.6px #ccc;
+    }
 }
 
 
@@ -236,6 +288,31 @@ PC用*/
         margin-top: 1em;
         padding: 1em 1.5em;
         width: 75%;
+    }
+    .kakomi_top {
+        margin: 1em auto;
+        padding: 0.3em 0.3em;
+        display: inline-block;
+        width: 75%;
+        /*幅の調節*/
+        background-color: #fff;
+        /* 背景色 */
+        border: 2px solid #000000;
+        /*線の太さ・色*/
+        border-radius: 7px;
+        box-shadow: 0.2px 0.4px 0.6px #ccc;
+    }
+    #cloud_img {
+        padding-top: 5%;
+        padding-right: 3%;
+        padding-left: 3%;
+        height: auto;
+    }
+    #lcom_img {
+        width: auto;
+        max-width: 30vw;
+        height: auto;
+        max-height: 30vw;
     }
 }
 
@@ -262,6 +339,21 @@ PC用*/
         margin-top: 1em;
         padding: 1em 1em;
         width: 75%;
+    }
+    /*雲*/
+    #cloud_img {
+        padding-top: 5%;
+        padding-right: 3%;
+        padding-left: 3%;
+        height: auto;
+        filter: drop-shadow(2px 2px 2px rgba(160, 160, 160, 0.8));
+    }
+    #lcom_img {
+        width: auto;
+        max-width: 30vw;
+        height: auto;
+        max-height: 30vw;
+        margin: 0 auto;
     }
 }
 
@@ -296,5 +388,18 @@ PC用*/
         margin-top: 1em;
         padding: 1em 1em;
         width: 75%;
+    }
+    #cloud_img {
+        padding-top: 5%;
+        padding-right: 3%;
+        padding-left: 3%;
+        height: auto;
+    }
+    #lcom_img {
+        width: auto;
+        max-width: 30vw;
+        height: auto;
+        max-height: 30vw;
+        margin: 0 auto;
     }
 }
