@@ -96,23 +96,47 @@ if (isset($_REQUEST['res'])) {
 
     <div class="container">
 
-        <div class="pro_kakoi" style="text-align: center;">
-            <div class="pro_inner" style="padding: 15px; text-align: center;">
 
-                <img src="../image/project/<?php print(htmlspecialchars($procard['project_picture'], ENT_QUOTES)); ?>" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h2><?php print(htmlspecialchars($procard['project_name'], ENT_QUOTES)); ?></h2>
-                    <h3><?php print(mb_substr(htmlspecialchars($procard['message'], ENT_QUOTES), 0, 800)); ?></h3>
-                    <p>開始: <?php print(htmlspecialchars($procard['open_year'] . "/" . $procard['open_month'] . "/" . $procard['open_date'] . " " . $procard['open_time'] . ":00", ENT_QUOTES)); ?></p>
-                    <h2><?php print(htmlspecialchars(refer_prefecture($procard['place_id']), ENT_QUOTES)); ?></h2>
+        <a href="content.php?id=<?php print(htmlspecialchars($procard['id'], ENT_QUOTES)); ?>">
+            <div class="pro_kakoi" style="text-align: center;">
+                <div class="pro_inner" style="padding: 15px; text-align: center;">
+
+                    <img src="../image/project/<?php print(htmlspecialchars($procard['project_picture'], ENT_QUOTES)); ?>" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h2><?php print(htmlspecialchars($procard['project_name'], ENT_QUOTES)); ?></h2>
+                        <h3><?php print(mb_substr(htmlspecialchars($procard['message'], ENT_QUOTES), 0, 25)); ?></h3>
+                        <p>開始: <?php print(htmlspecialchars($procard['open_year'] . "/" . $procard['open_month'] . "/" . $procard['open_date'] . " " . $procard['open_time'] . ":00", ENT_QUOTES)); ?></p>
+                        <h2><?php print(htmlspecialchars(refer_prefecture($procard['place_id']), ENT_QUOTES)); ?></h2>
+                    </div>
+                    <img class="pro_icon" style="vertical-align:top;" src="../image/icon/<?php print(htmlspecialchars($member['picture'], ENT_QUOTES)); ?>" /><span class="pro_icon_text" ><?php print(htmlspecialchars($member['name'], ENT_QUOTES)); ?></span>
                 </div>
-                <img class="pro_icon" style="vertical-align:top;" src="../image/icon/<?php print(htmlspecialchars($member['picture'], ENT_QUOTES)); ?>" /><span class="pro_icon_text"><?php print(htmlspecialchars($member['name'], ENT_QUOTES)); ?></span>
-            </div>
 
+
+            </div>
+        </a>
+
+
+        <img src="../image/project/<?php print(htmlspecialchars($procard['project_picture'], ENT_QUOTES)); ?>" class="content-img mb-3" ; alt="...">
+        </figure>
+
+        <div class="kakomi">
+            <h4><?php print(htmlspecialchars($procard['project_name'], ENT_QUOTES)); ?>: 概要メッセージ</h4>
+            <h6><?php print(htmlspecialchars($procard['message'], ENT_QUOTES)); ?></h6>
+            <small>開始: <?php print(htmlspecialchars($procard['open_year'] . "/" . $procard['open_month'] . "/" . $procard['open_date'] . " " . $procard['open_time'] . ":00", ENT_QUOTES)); ?> <?php print(htmlspecialchars($prefacture, ENT_QUOTES)); ?> にて開催</small>
+            <br>
+
+            <nav class="inline-block">
+                <ul>
+                    <li>
+                        <div class="content-icon">
+                            <img src="../image/icon/<?php print(htmlspecialchars($member['picture'], ENT_QUOTES)); ?>" class="content-icon" alt="写真">
+                        </div>
+                    </li>
+                    <li><small><?php print(htmlspecialchars($member['name'], ENT_QUOTES)); ?>さんの投稿</small></li>
+                </ul>
+            </nav>
 
         </div>
-
-
         <?php foreach ($coms as $com) : ?>
             <span class="item-header clearfix">
                 <span class="item-user-icon">
@@ -122,7 +146,7 @@ if (isset($_REQUEST['res'])) {
                     <strong><?php print(htmlspecialchars($com['message'], ENT_QUOTES)); ?></strong>
                 </span>
                 <span class="item-date">
-                <?php print(htmlspecialchars($com['created'], ENT_QUOTES)); ?>　<?php print(htmlspecialchars($com['name'], ENT_QUOTES)); ?>
+                    2014/08/29 19:00　<?php print(htmlspecialchars($com['name'], ENT_QUOTES)); ?>
                 </span>
             </span>
         <?php endforeach; ?>
@@ -131,8 +155,7 @@ if (isset($_REQUEST['res'])) {
             <form action="" method="post">
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1">コメントエリア</label>
-                    <br>
-                    <textarea class="comment-text" name="message" cols="50" rows="2"><?php print(htmlspecialchars($message, ENT_QUOTES)); ?></textarea>
+                    <textarea class="form-control" name="message" cols="50" rows="3"><?php print(htmlspecialchars($message, ENT_QUOTES)); ?></textarea>
                     <button type="submit" class="btn btn-primary mb-2">送信</button>
                     <input type="hidden" name="id" value="<?php print(htmlspecialchars($_REQUEST['id'], ENT_QUOTES)); ?>" />
                     <input type="hidden" name="reply_project_id" value="<?php print(htmlspecialchars($_REQUEST['id'], ENT_QUOTES)); ?>" />
@@ -142,7 +165,7 @@ if (isset($_REQUEST['res'])) {
         <?php endif; ?>
 
 
-    </div>
+
     </div>
 
 </body>

@@ -29,12 +29,13 @@ PC用*/
 }
 
 .content-icon {
-    margin: 1rem;
+    display: inline-block;
+    margin: 0;
     border-radius: 50%;
     /* 角丸半径を50%にする(=円形にする) */
-    width: 60px;
+    width: 50%;
     /* ※縦横を同値に */
-    height: 60px;
+    height: 50%;
 }
 
 .content-img {
@@ -59,8 +60,29 @@ PC用*/
     box-shadow: 0.2px 0.4px 0.6px #ccc;
 }
 
+.pro_icon {
+    display: inline-block;
+    margin-right: 3%;
+    border-radius: 50%;
+    /* 角丸半径を50%にする(=円形にする) */
+    width: auto;
+    max-width: 9%;
+    height: auto;
+    max-height: 9%;
+}
+
+.pro_icon_text {
+    display: inline-block;
+    color: #011936;
+    font-family: TanukiFont;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+
+/*
 .inline-block {
-    text-align: center;
+    text-align: left;
 }
 
 .inline-block ul {
@@ -70,8 +92,13 @@ PC用*/
 }
 
 .inline-block li {
-    display: inline-block;
+    display: inline;
 }
+
+.inline-block img {
+    text-align: start;
+}
+*/
 
 
 /*ピン*/
@@ -311,7 +338,7 @@ PC用*/
 /*プロジェクト一覧の囲いなど*/
 
 .pro_kakoi {
-    background: #c9b98f;
+    background: #fff;
     padding: 1em 2em;
     width: 80%;
     margin: 15px auto;
@@ -326,8 +353,24 @@ PC用*/
 
 .pro_inner h3,
 .pro_inner p {
-    margin-bottom: 2em;
+    margin-bottom: 1em;
     font-size: 1em;
+    color: #011936;
+    font-family: TanukiFont;
+    font-weight: bold;
+}
+
+.pro_inner h2 {
+    margin-bottom: 1em;
+    font-size: 1.3em;
+    color: #011936;
+    font-family: TanukiFont;
+    font-weight: bold;
+}
+
+.pro_kakoi small {
+    margin: 0em;
+    font-size: 0.8em;
     color: #011936;
     font-family: TanukiFont;
     font-weight: bold;
@@ -471,6 +514,14 @@ PC用*/
         height: auto;
         max-height: 30vw;
         margin: 0 auto;
+    }
+    .pro_icon {
+        display: inline-block;
+        /* 角丸半径を50%にする(=円形にする) */
+        width: auto;
+        max-width: 15%;
+        height: auto;
+        max-height: 15%;
     }
 }
 
