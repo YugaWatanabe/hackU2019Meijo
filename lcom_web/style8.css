@@ -425,6 +425,16 @@ PC用*/
     left: 20%;
 }
 
+.paging {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.paging li {
+    display: inline;
+    list-style: none;
+}
+
 
 /*ここまで*/
 
@@ -557,6 +567,10 @@ PC用*/
     .item-user-icon {
         padding-top: 5.5%;
     }
+    .paging {
+        margin-top: 10px;
+        margin-left: 15%;
+    }
 }
 
 
@@ -608,6 +622,10 @@ PC用*/
     }
     .item-user-icon {
         padding-top: 8%;
+    }
+    .paging {
+        margin-top: 10px;
+        margin-left: 15%;
     }
 }
 
@@ -675,5 +693,9 @@ PC用*/
     }
     .item-user-icon {
         padding-top: 8%;
+    }
+    .paging {
+        margin-top: 10px;
+        margin-left: 15%;
     }
 }
