@@ -299,12 +299,9 @@ if ($_REQUEST['action'] == 'rewrite' && isset($_SESSION['join'])) {
 
                 <input type="file" name="image" value="" id="image1">
             </div>
-            <button type="submit" class="btn btn-primary">送信</button>
+            <button type="submit" class="btn btn-primary" style="margin-bottom:2%;">送信</button>
         </form>
         <br>
-        <a href="../index.php">トップに戻る</a>
-        <br>
-        いまログイン中は<?php print(htmlspecialchars($member['name'], ENT_QUOTES)); ?>さん
     </div>
 
 

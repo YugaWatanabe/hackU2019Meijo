@@ -54,6 +54,26 @@ $procards->execute();
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
+
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-image: url(../image/top/bgbody.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .paging {
+            margin: 5%;
+            margin-left: 0%;
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+
+        .paging li {
+            display: inline;
+            list-style: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -110,7 +130,19 @@ $procards->execute();
             </a>
         <?php endforeach; ?>
 
+        <ul class="paging">
+            <?php if ($page > 1) : ?>
+                <li><a href="search_place.php?place=<?php print(htmlspecialchars($_GET['place'], ENT_QUOTES)); ?>&page=<?php print($page - 1); ?>">前のページへ</a></li>
+            <?php else : ?>
+                <li>前のページへ</a></li>
+            <?php endif; ?>
 
+            <?php if ($page < $maxPage) : ?>
+                <li><a href="search_place.php?place=<?php print(htmlspecialchars($_GET['place'], ENT_QUOTES)); ?>&page=<?php print($page + 1); ?>">次のページへ</a></li>
+            <?php else : ?>
+                <li>次のページへ</a></li>
+            <?php endif; ?>
+        </ul>
     </div>
 
 
