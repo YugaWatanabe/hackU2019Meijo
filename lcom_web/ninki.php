@@ -57,6 +57,14 @@ $procards->execute();
     <style>
         @import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP');
 
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-image: url(image/top/bgbody.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        }
+
         .paging {
             margin: 5%;
             margin-left: 0%;

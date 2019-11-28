@@ -43,7 +43,7 @@ if ($_GET['check'] == 'on') {
     $procards->bindParam(3, $date, PDO::PARAM_INT);
     $procards->bindParam(4, $start, PDO::PARAM_INT);
     $procards->execute();
-} else { 
+} else {
     $procards = $db->prepare('SELECT m.name, m.picture, p.* FROM members m, projects p WHERE m.id=p.member_id AND p.open_year = ? AND p.open_month = ? ORDER BY p.created DESC LIMIT ?, 6');
     $procards->bindParam(1, $year, PDO::PARAM_INT);
     $procards->bindParam(2, $month, PDO::PARAM_INT);
@@ -83,6 +83,13 @@ if ($_GET['check'] == 'on') {
     <style>
         @import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP');
 
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-image: url(image/top/bgbody.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
         .form-date {
             background-color: #fff;
             position: relative;
@@ -97,6 +104,17 @@ if ($_GET['check'] == 'on') {
             border-radius: 10px;
             color: #011936;
             font-family: TanukiFont;
+        }
+
+        .paging {
+            margin: 5%;
+            margin-left: 0%;
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+
+        .paging li {
+            display: inline;
+            list-style: none;
         }
 
         input[type="date"] {
@@ -135,70 +153,83 @@ if ($_GET['check'] == 'on') {
 
 <body>
 
-    <div class="mainSite">
-        <nav class="navbar navbar-expand-lg navbar-dark">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a class="nav-item nav-link active" href="index.php">ホーム<span class="sr-only">(current)</span></a>
-                    <a class="nav-item nav-link" href="project/joinproject.php">プロジェクトを探す</a>
-                    <?php if (!$loginflag) : ?>
-                        <a class="nav-item nav-link" href="login/login.php">ログイン</a>
-                    <?php endif; ?>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="index.php">ホーム<span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="project/joinproject.php">プロジェクトを探す</a>
+                <?php if (!$loginflag) : ?>
+                    <a class="nav-item nav-link" href="login/login.php">ログイン</a>
+                <?php endif; ?>
 
-                    <?php if ($loginflag) : ?>
-                        <a class="nav-item nav-link" href="project/createpro.php">プロジェクト作成</a>
-                        <a class="nav-item nav-link" href="login/logout.php">ログアウト</a>
-                    <?php endif; ?>
+                <?php if ($loginflag) : ?>
+                    <a class="nav-item nav-link" href="project/createpro.php">プロジェクト作成</a>
+                    <a class="nav-item nav-link" href="login/logout.php">ログアウト</a>
+                <?php endif; ?>
 
-                    <form class="form-inline my-2 my-lg-0" action="project/searchproject.php" method="get">
-                        <input class="search_form2 mr-sm-1" id="search" name="search" type="text" placeholder="フリーワードを入力" />
-                        <button class="btn_form2" type="submit" id="sbtn2"><i class="fas fa-search"></i></button>
-                    </form>
-                </div>
+                <form class="form-inline my-2 my-lg-0" action="project/searchproject.php" method="get">
+                    <input class="search_form2 mr-sm-1" id="search" name="search" type="text" placeholder="フリーワードを入力" />
+                    <button class="btn_form2" type="submit" id="sbtn2"><i class="fas fa-search"></i></button>
+                </form>
             </div>
-            <form class="form-inline my-2 my-lg-0" action="project/searchproject.php" method="get">
-                <input class="form-control mr-sm-1" id="search" name="search" type="text" placeholder="フリーワードを入力" />
-                <input type="hidden" name="page" value="1">
-                <button class="search_btn" type="submit" id="sbtn2"><i class="fas fa-search"></i></button>
-            </form>
-        </nav>
+        </div>
+        <form class="form-inline my-2 my-lg-0" action="project/searchproject.php" method="get">
+            <input class="form-control mr-sm-1" id="search" name="search" type="text" placeholder="フリーワードを入力" />
+            <input type="hidden" name="page" value="1">
+            <button class="search_btn" type="submit" id="sbtn2"><i class="fas fa-search"></i></button>
+        </form>
+    </nav>
 
 
-        <div class="container">
-            <form action="" method="get">
-                <label class="form-date">
-                    <input type="date" name="open"></input>
-                </label>
-                <button type="submit" class="btn btn-primary mb-2">検索</button>
+    <div class="container">
+        <form action="" method="get">
+            <label class="form-date">
+                <input type="date" name="open"></input>
+            </label>
+            <button type="submit" class="btn btn-primary mb-2">検索</button>
 
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1" name="check">
-                    <label class="form-check-label" for="exampleCheck1">日付が完全一致するプロジェクトのみ</label>
-                </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1" name="check">
+                <label class="form-check-label" for="exampleCheck1">日付が完全一致するプロジェクトのみ</label>
+            </div>
 
-            </form>
+        </form>
 
-            <?php foreach ($procards as $procard) : ?>
-                <a href="project/content.php?id=<?php print(htmlspecialchars($procard['id'], ENT_QUOTES)); ?>">
-                    <div class="pro_kakoi animated bounceInDown" style="text-align: center;">
-                        <div class="pro_inner" style="padding: 15px; text-align: center;">
+        <?php foreach ($procards as $procard) : ?>
+            <a href="project/content.php?id=<?php print(htmlspecialchars($procard['id'], ENT_QUOTES)); ?>">
+                <div class="pro_kakoi animated bounceInDown" style="text-align: center;">
+                    <div class="pro_inner" style="padding: 15px; text-align: center;">
 
-                            <img src="image/project/<?php print(htmlspecialchars($procard['project_picture'], ENT_QUOTES)); ?>" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h2><?php print(htmlspecialchars($procard['project_name'], ENT_QUOTES)); ?></h2>
-                                <h3><?php print(mb_substr(htmlspecialchars($procard['message'], ENT_QUOTES), 0, 25)); ?></h3>
-                                <p>開始: <?php print(htmlspecialchars($procard['open_year'] . "/" . $procard['open_month'] . "/" . $procard['open_date'] . " " . $procard['open_time'] . ":00", ENT_QUOTES)); ?></p>
-                                <h2><?php print(htmlspecialchars(refer_prefecture($procard['place_id']), ENT_QUOTES)); ?></h2>
+                        <img src="image/project/<?php print(htmlspecialchars($procard['project_picture'], ENT_QUOTES)); ?>" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h2><?php print(htmlspecialchars($procard['project_name'], ENT_QUOTES)); ?></h2>
+                            <h3><?php print(mb_substr(htmlspecialchars($procard['message'], ENT_QUOTES), 0, 25)); ?></h3>
+                            <p>開始: <?php print(htmlspecialchars($procard['open_year'] . "/" . $procard['open_month'] . "/" . $procard['open_date'] . " " . $procard['open_time'] . ":00", ENT_QUOTES)); ?></p>
+                            <h2><?php print(htmlspecialchars(refer_prefecture($procard['place_id']), ENT_QUOTES)); ?></h2>
 
-                            </div>
                         </div>
                     </div>
-                </a>
-            <?php endforeach; ?>
-        </div>
+                </div>
+            </a>
+        <?php endforeach; ?>
+
+        <ul class="paging">
+            <?php if ($page > 1) : ?>
+                <li><a href="place_date.php?page=<?php print($page - 1); ?>">前のページへ</a></li>
+            <?php else : ?>
+                <li>前のページへ</a></li>
+            <?php endif; ?>
+
+            <?php if ($page < $maxPage) : ?>
+                <li><a href="place_date.php?page=<?php print($page + 1); ?>">次のページへ</a></li>
+            <?php else : ?>
+                <li>次のページへ</a></li>
+            <?php endif; ?>
+        </ul>
+    </div>
 </body>
 
 </html>
