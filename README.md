@@ -7,5 +7,5 @@ Web版サーバ: lcom_web
 
 sqlのバックアップ: lcom_bbs_?.sql
 
-Xammpのhtdogsにlcom_webを貼りつけサーバたてて、mysqlにバックアップ(ver4)をインポートすれば動かせます。
+Xammpのhtdogsにlcom_webを貼りつけサーバたてて、mysqlにバックアップ(ver5)をインポートすれば動かせます。
 古いバージョンは使えない可能性があるので、更新に注意
